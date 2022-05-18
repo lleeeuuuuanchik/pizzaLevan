@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/filter.css">
+    <link rel="stylesheet" href="./css/products.css">
+    <link rel="stylesheet" href="./css/cart.css">
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <div class="container">
+                <div class="header-content-container">
+                    <img src="./assets/img/logo.png"  @click="currentPage = 'home'" alt="" class="header__logo">
+                    <button class="header__cart-btn" v-if="currentPage === 'home'" @click="currentPage = 'cart'">
+                        <div class="price-information__container">
+                            <p class="cart-btn__price">520</p> 
+                            <p class="cart-btn__price">₽</p> 
+                        </div>
+                        <div class="cart-btn__wall"></div>
+                        <div class="prodiuct-amount-container">
+                            <img src="./assets/img/cart-icon.svg" alt="" class="cart-img">
+                            <p class="cart-btn__price">3</p>
+                        </div>                    
+                    </button>
+                </div>
+            </div>
+        </header>
+
+
+        <div class="page-home" v-if="currentPage === 'home'">
+            <section class="filter">
+                <div class="container">
+                    <div class="main-filters-container">
+                        <div class="filters-container">
+                            <v-filter-button v-for="item in categories" @click="pizzaCategory = item.name" :key="item.id" :active="item.isActive" :id="item.id" :word="item.name" @switch="switchBoolean"></v-filter-button>                                    
+                        </div>
+                        <div class="filters-container">
+                            <img src="./assets/img/arrow-up.svg" alt="" class="filter-arrow" v-if="showFiltersBar">
+                            <img src="./assets/img/arrow-down.svg" alt="" class="filter-arrow" v-else>
+                            <p class="filter-hint">Сортировка по:</p>
+                            <div class="filter-text-container">
+                                <p class="selected-filter" @click="showFiltersBar = !showFiltersBar">{{filterWord}}</p>
+                                <div class="filters-window" v-if="showFiltersBar">
+                                    <v-filter v-for="item in filters"
+                                              :key="item.id"
+                                              :active="item.isActive"
+                                              :id="item.id" 
+                                              :word="item.name"
+                                              @switch="secondSwitchBoolean">
+                                    </v-filter-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="product">
+                <div class="container">
+                    <p class="product-inf">Пиццы</p>    
+                    <div class="product__container">
+                        <v-card @send="send" v-for="(element, index) in pizzaArray" :key="index"
+                            :element="element"></v-card>
+                </div>
+            </section>
+        </div>
+
+
+        <div class="page-cart" v-if="currentPage === 'cart'">
+            <div class="cart">
+                <div class="cart__title">
+                    <div class="title-container">
+                        <img src="./assets/img/cart-second.svg" alt="" class="title-img">
+                        <p class="title">Корзина</p>
+                    </div>
+                    <div class="cart__clear-container">
+                        <img src="./assets/img/delete.svg" alt="" class="clear-img">
+                        <p class="clear" @click="cartArray = []">Очистить корзину</p>
+                    </div>
+                </div>
+                <v-cart @del="del" :item="item" v-for="(item, index) in cartArray" :key="index"></v-cart>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="js/vue.global.js"></script>
+    <script src="js/components/vFilterButton.js" type="module"></script>
+    <script src="js/components/vFilter.js" type="module"></script>
+    <script src="js/components/vCard.js" type="module"></script>
+    <script src="js/main.js" type="module"></script>
+    
+    
+</body>
+
+</html>

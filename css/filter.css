@@ -1,0 +1,127 @@
+.filter {
+    margin-top: 40px;
+}
+
+.main-filters-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filters-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter__element {
+    padding: 15px 25px;
+    background: #F9F9F9;
+    border-radius: 30px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    transition: all 0.2s ease-in-out;
+}
+
+.filter__element:hover {
+    background: #282828;
+    color: white;
+}
+
+.filter__element-active {
+    background: #282828;
+    color: white;
+}
+
+.filter-hint {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    letter-spacing: 0.015em;
+
+    color: #2C2C2C;
+}
+
+.filter-arrow {
+    width: 10px;
+    height: 6px;
+}
+
+.filter-text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+
+.selected-filter {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    letter-spacing: 0.015em;
+    cursor: pointer;
+    text-decoration: underline dotted;
+    color: #FE5F1E;
+}
+
+.filters-window {
+    width: 132px;
+    height: max-content;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: #FFFFFF;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+    border-radius: 10px;
+    position: absolute;
+    top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.filter__second-element {
+    padding: 10px 15px;
+    background-color: white;
+    color: black;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    text-align: left;
+
+    letter-spacing: 0.015em;
+    transition: all 0.1s ease-in-out;
+}
+
+.filter__second-element:hover {
+    color: #FE5F1E;
+    background: rgba(254, 95, 30, 0.05);
+    font-weight: 400;
+}
+
+
+.filter__second-element-active {
+    font-family: 'Montserrat';
+    text-align: left;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    letter-spacing: 0.015em;
+    color: #FE5F1E;
+    background: rgba(254, 95, 30, 0.05);
+}
