@@ -3,7 +3,7 @@ import vSetting from "./vSetting.js"
 export default {
     template: /* html */ `
         <div class="product__element">
-            <img src="" alt="" class="product__element-img">
+            <img :src="'../../assets/img/pizza/' + element.img" alt="" class="product__element-img">
             <p class="product__element-name">{{element.name}}</p>
             <vSetting @send="send" :element="element"></vSetting>      
         </div>

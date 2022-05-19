@@ -20,13 +20,13 @@
                     <img src="./assets/img/logo.png"  @click="currentPage = 'home'" alt="" class="header__logo">
                     <button class="header__cart-btn" v-if="currentPage === 'home'" @click="currentPage = 'cart'">
                         <div class="price-information__container">
-                            <p class="cart-btn__price">520</p> 
+                            <p class="cart-btn__price">{{cartPrice}}</p> 
                             <p class="cart-btn__price">₽</p> 
                         </div>
                         <div class="cart-btn__wall"></div>
                         <div class="prodiuct-amount-container">
                             <img src="./assets/img/cart-icon.svg" alt="" class="cart-img">
-                            <p class="cart-btn__price">3</p>
+                            <p class="cart-btn__price">{{cartArray.length}}</p>
                         </div>                    
                     </button>
                 </div>
@@ -53,7 +53,8 @@
                                               :active="item.isActive"
                                               :id="item.id" 
                                               :word="item.name"
-                                              @switch="secondSwitchBoolean">
+                                              @switch="secondSwitchBoolean"
+                                              @click="showFiltersBar = !showFiltersBar">
                                     </v-filter-button>
                                 </div>
                             </div>
@@ -72,8 +73,8 @@
         </div>
 
 
-        <div class="page-cart" v-if="currentPage === 'cart'">
-            <div class="cart">
+        <div class="page-cart" v-if="currentPage === 'cart'" >
+            <div class="cart" v-if="cartArray.length >= 1">
                 <div class="cart__title">
                     <div class="title-container">
                         <img src="./assets/img/cart-second.svg" alt="" class="title-img">
@@ -85,6 +86,17 @@
                     </div>
                 </div>
                 <v-cart @del="del" :item="item" v-for="(item, index) in cartArray" :key="index"></v-cart>
+                <div class="cart__price-container">
+                    <p class="cartCount">Всего пицц: <span class="cartCount-number">{{cartArray.length}}</span></p>
+                    <p class="cartCount">Сумма заказа: <span class="cartCount-price">{{cartPrice}}</span></p>
+                </div>
+                <div class="cart-buttons-container">
+                    <img src="./assets/img/return.svg" @click="currentPage = 'home'" alt="">
+                    <img src="./assets/img/buy.svg" @click="buy" alt="">
+                </div>
+            </div>
+            <div class="cart-empty" v-else>
+                <img src="./assets/img/cartEmpty.svg" @click="currentPage = 'home'" alt="">
             </div>
         </div>
     </div>

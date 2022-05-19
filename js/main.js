@@ -29,6 +29,10 @@ const App = {
         }
     },
     methods: {
+        buy() {
+          this.currentPage = 'home'
+          this.cartArray = []
+        },
         switchBoolean(id) {
             this.categories = this.categories.map(category => ({...category, isActive: false}));      
             this.categories[id].isActive = true
@@ -66,6 +70,11 @@ const App = {
         console.log(this.copyMainArray);
     },
     computed: {
+        cartPrice() {
+          return this.cartArray.reduce((total, el) => {
+            return total + el.price
+          },0)
+        },
         pizzaArray() {
             if (this.pizzaCategory === "Все") {
                 return this.copyMainArray
