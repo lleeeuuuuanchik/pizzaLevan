@@ -2,7 +2,7 @@ export default {
     template: /* html */ `
         <div class="cart-element">
             <div class="cart-element__title-container">
-                <img :src="'../../assets/img/pizza/' + item.img" class="cart-element-img" alt="">
+                <img :src="'./assets/img/pizza/' + item.img" class="cart-element-img" alt="">
                 <div class="cart-element__title">
                     <p class="title-first">{{item.name}}</p>
                     <p class="title-second">{{item.dough}}, {{item.size}}</p>
